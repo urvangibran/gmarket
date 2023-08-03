@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .cart-num {
+    @apply absolute rounded-[50%] h-5 w-5 flex items-center justify-center text-white bg-red-500 top-0 right-0;
+  }
+
+  .Typewriter {
+    @apply inline;
+  }
+
+  .Typewriter .Typewriter__wrapper {
+    @apply text-[#2C7DA0];
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-tr from-lime-400 to-green-600  font-semibold hover:-translate-y-1 transition-transform;
+  }
+
+  .btn-secondary {
+    @apply font-medium hover:bg-slate-600/90 transition-colors bg-slate-600;
+  }
+}
+
+.slick-arrow::before {
+  color: rgb(43, 43, 43) !important;
+}
+
+.lucida {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.arial {
+  font-family: Arial, Helvetica, sans-serif;
+}
