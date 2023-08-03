@@ -1,3 +1,4 @@
+import Offerings from "../../components/Offerings";
 import Hero from "../../components/Hero";
 import Navbar from "../../components/Navbar";
 
@@ -6,6 +7,7 @@ const home = () => {
     <main>
       <Navbar />
       <Hero />
+      <Offerings />
     </main>
   );
 };
