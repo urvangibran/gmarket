@@ -1,7 +1,7 @@
 import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { userSelector, login, logout } from "../../actions/user/actionUser";
+import { userSelector, login, logout, signup } from "../../actions/user/actionUser";
 import Wishlist from "../Wishlist";
 import { FiShoppingCart } from "react-icons/fi";
 import { BiUser } from "react-icons/bi"
@@ -10,8 +10,8 @@ import { useState } from "react";
 import { Tooltip } from "@chakra-ui/react";
 
 const Navbar = () => {
-  const [isSignedUp, setIsSignedUp] = useState(false)
-  const { isLoggedIn } = useSelector(userSelector);
+  // const [isSigned, setIsSigned] = useState(false)
+  const { isLoggedIn, isSigned } = useSelector(userSelector);
   const { cart } = useSelector(productsSelector);
   const uniqueCart = cart.filter(
     (item, index, self) => self.findIndex((t) => t.id === item.id) === index
@@ -23,11 +23,11 @@ const Navbar = () => {
     dispatch(isLoggedIn ? logout() : login());
   };
 
-  const handleSignUp = () => {
-    setIsSignedUp(true)
+  const handleSignup = () => {
+    dispatch(signup())
   }
 
-  const loginButtonDisabled = !isSignedUp;
+  const loginButtonDisabled = !isSigned;
 
   return (
     <div className="py-4 arial border-b sticky z-50 top-0 left-0 right-0 bg-white/40 backdrop-blur-sm">
@@ -80,17 +80,17 @@ const Navbar = () => {
           </Tooltip>
           <Tooltip
             hasArrow
-            label={isSignedUp ? "Already signed up" : "Click to sign up"}
+            label={isSigned ? "Already signed up" : "Click to sign up"}
             bg={"gray.300"}
             color={"black"}
           >
             <button
-              onClick={handleSignUp}
-              className={`text-white font-semibold border-2 border-[#012A4A] bg-[#012A4A] rounded-md py-[2px] px-3 w-[100px] ${isSignedUp ? "cursor-not-allowed" : "cursor-pointer active:scale-90  hover:bg-white hover:text-[#012A4A]"
+              onClick={handleSignup}
+              className={`text-white font-semibold border-2 border-[#012A4A] bg-[#012A4A] rounded-md py-[2px] px-3 w-[100px] ${isSigned ? "cursor-not-allowed" : "cursor-pointer active:scale-90  hover:bg-white hover:text-[#012A4A]"
                 }`}
-              disabled={isSignedUp}
+              disabled={isSigned}
             >
-              {isSignedUp ? "Signed" : "Sign up"}
+              {isSigned ? "Signed" : "Sign up"}
             </button>
           </Tooltip>
         </div>
