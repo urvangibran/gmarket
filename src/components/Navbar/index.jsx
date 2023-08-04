@@ -1,11 +1,11 @@
 import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { userSelector, login, logout } from "../../features/user/userSlice";
+import { userSelector, login, logout } from "../../actions/user/actionUser";
 import Wishlist from "../Wishlist";
 import { FiShoppingCart } from "react-icons/fi";
 import { BiUser } from "react-icons/bi"
-import { productsSelector } from "../../features/products/productsSlice";
+import { productsSelector } from "../../actions/products/actionProduct";
 import { useState } from "react";
 import { Tooltip } from "@chakra-ui/react";
 

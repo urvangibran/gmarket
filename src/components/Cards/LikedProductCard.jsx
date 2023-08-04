@@ -2,9 +2,9 @@ import { IconButton, Tag, Tooltip } from "@chakra-ui/react";
 import { AiTwotoneStar } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromWishlist } from "../../features/products/productsSlice";
+import { removeFromWishlist } from "../../actions/products/actionProduct";
 import { formatToCurrency } from "../../utils/helpers";
-import { userSelector } from "../../features/user/userSlice";
+import { userSelector } from "../../actions/user/actionUser";
 import { Link } from "react-router-dom";
 
 const LikedProductCard = ({ product }) => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { productsSelector } from "../../../features/products/productsSlice";
+import { productsSelector } from "../../../actions/products/actionProduct";
 import { formatToCurrency } from "../../../utils/helpers";
 import { FaCheckCircle } from "react-icons/fa";
 

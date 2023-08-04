@@ -6,7 +6,7 @@ import {
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
-} from "../../features/products/productsSlice";
+} from "../../actions/products/actionProduct";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 

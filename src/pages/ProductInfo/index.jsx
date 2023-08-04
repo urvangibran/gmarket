@@ -11,10 +11,10 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   productsSelector,
   removeFromCart,
-} from "../../features/products/productsSlice";
+  addToCart
+} from "../../actions/products/actionProduct";
 import { formatToCurrency } from "../../utils/helpers";
-import { userSelector } from "../../features/user/userSlice";
-import { addToCart } from "../../features/products/productsSlice";
+import { userSelector } from "../../actions/user/actionUser";
 import CategoryChip from "../../components/Chip/CategoryChip";
 import ImageZoom from "../../components/ImageZoom";
 

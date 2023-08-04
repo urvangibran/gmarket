@@ -6,8 +6,8 @@ import {
   addToWishlist,
   productsSelector,
   removeFromWishlist,
-} from "../../../features/products/productsSlice";
-import { userSelector } from "../../../features/user/userSlice";
+} from "../../../actions/products/actionProduct";
+import { userSelector } from "../../../actions/user/actionUser";
 
 const LikeButton = ({ productId }) => {
   const [isLiked, setIsLiked] = useState(false);

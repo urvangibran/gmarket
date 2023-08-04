@@ -11,10 +11,9 @@ import {
 } from "@chakra-ui/react";
 import { FiHeart } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import { productsSelector } from "../../features/products/productsSlice";
+import { productsSelector, clearWishList } from "../../actions/products/actionProduct";
 import WishList from "../List/Wishlist";
-import { clearWishList } from "../../features/products/productsSlice";
-import { userSelector } from "../../features/user/userSlice";
+import { userSelector } from "../../actions/user/actionUser";
 
 const Wishlist = () => {
   const { likedProducts } = useSelector(productsSelector);

@@ -1,7 +1,7 @@
 import { Table, TableContainer, Tbody, Th, Thead, Tr } from "@chakra-ui/react";
 import { FaShoppingCart } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { productsSelector } from "../../features/products/productsSlice";
+import { productsSelector } from "../../actions/products/actionProduct";
 import CartListItem from "../Items/CartListItem";
 
 const CartContent = () => {

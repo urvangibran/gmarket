@@ -6,7 +6,7 @@ import { GrPersonalComputer } from 'react-icons/gr'
 import { ImHeadphones } from "react-icons/im";
 import { useSelector } from "react-redux";
 import ProductList from "../../List/ProductList";
-import { productsSelector } from "../../../features/products/productsSlice";
+import { productsSelector } from "../../../actions/products/actionProduct";
 
 const ShopByCategories = () => {
   const [filterType, setFilterType] = useState("electronics");

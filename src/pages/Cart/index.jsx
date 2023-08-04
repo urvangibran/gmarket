@@ -4,7 +4,7 @@ import Checkout from "../../components/Cart/Checkout";
 import { Link } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
 import { useSelector } from "react-redux";
-import { productsSelector } from "../../features/products/productsSlice";
+import { productsSelector } from "../../actions/products/actionProduct";
 
 const Cart = () => {
   const { cart } = useSelector(productsSelector);

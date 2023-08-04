@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getAllProducts,
   productsSelector,
-} from "../../../features/products/productsSlice";
+} from "../../../actions/products/actionProduct";
 import Carousel from "../../Carousel";
 
 const AllProducts = () => {
