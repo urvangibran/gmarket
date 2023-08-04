@@ -2,7 +2,7 @@ import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userSelector, login, logout } from "../../features/user/userSlice";
-import Wishlist from "../Like";
+import Wishlist from "../Wishlist";
 import { FiShoppingCart } from "react-icons/fi";
 import { BiUser } from "react-icons/bi"
 import { productsSelector } from "../../features/products/productsSlice";
