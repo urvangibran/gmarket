@@ -1,0 +1,16 @@
+.image-zoom-container {
+    display: inline-block;
+    overflow: hidden;
+    /* width: 15rem; */
+    /* height: 15rem; */
+}
+
+.image-zoom-image {
+    max-height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.image-zoom-image.zoomed img {
+    transform: scale(2);
+}

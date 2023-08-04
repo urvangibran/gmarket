@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import { myAxios } from "../../api/config";
 import { AiTwotoneStar } from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
-import { BsLightningFill } from "react-icons/bs";
+import { BsFillBagDashFill } from "react-icons/bs";
 import Navbar from "../../components/Navbar";
 import ProductList from "../../components/List/ProductList";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,10 +15,11 @@ import {
 } from "../../actions/products/actionProduct";
 import { formatToCurrency } from "../../utils/helpers";
 import { userSelector } from "../../actions/user/actionUser";
-import CategoryChip from "../../components/Chip/CategoryChip";
+import CategoryTag from "../../components/CategoryTag/CategoryTag";
 import ImageZoom from "../../components/ImageZoom";
+import { Link } from "react-router-dom";
 
-const ProductInfo = () => {
+const ProductDetail = () => {
   const [similarProducts, setSimilarProducts] = useState([]);
   const { id } = useParams();
   const [product, setProduct] = useState({});
@@ -31,9 +32,10 @@ const ProductInfo = () => {
   const { isLoggedIn } = useSelector(userSelector);
 
   useEffect(() => {
-    async function getProductInfo() {
+    async function getProductDetail() {
       try {
         const res = await myAxios.get(`/products/${id}`);
+        // console.log(res.data);
         setProduct(res.data);
       } catch (err) {
         setError(err.message);
@@ -41,11 +43,11 @@ const ProductInfo = () => {
         setIsFetching(false);
       }
     }
-    getProductInfo();
+    getProductDetail();
   }, [id]);
 
   useEffect(() => {
-    const present = cart.find((p) => p.id === product.id);
+    const present = cart.find((prod) => prod.id === product.id);
     if (present) {
       setIsPresentInCart(true);
     } else {
@@ -87,26 +89,43 @@ const ProductInfo = () => {
 
           {/* right */}
           <div className="pt-10">
-            <CategoryChip product={product} />
+            <CategoryTag product={product} />
             <h1 className="text-3xl font-bold font-Poppins mb-1">
               {product?.title}
             </h1>
-            <Tag colorScheme="green">
-              {product?.rating.rate} <AiTwotoneStar className="inline" />
-            </Tag>
-            <p className="inline ml-2 text-gray-500 text-sm">
-              ({product?.rating.count})
-            </p>
+            <div className="flex items-center">
+              <Tag colorScheme="cyan" color={"black"}>
+                {product?.rating.rate} <span className="mr-1"></span> <AiTwotoneStar className="inline" />
+              </Tag>
+              <p className="inline ml-2 text-gray-500 text-sm">
+                ({product?.rating.count})
+              </p>
+            </div>
             <h2 className="text-xl font-Poppins font-semibold my-3">
               {formatToCurrency.format(product?.price)}
             </h2>
-            <p className="text-gray-500 font-Poppins">{product?.description}</p>
+            <p className="text-gray-500 lucida first-letter:uppercase">{product?.description}</p>
             <div className="mt-3 space-x-1">
+              <Link
+                to="/cart"
+              >
+                <Button
+                  onClick={() =>
+                    dispatch(
+                      isPresentInCart
+                        ? removeFromCart(id)
+                        : addToCart({ id, quantity: 1 })
+                    )
+                  }
+                  disabled={!isLoggedIn}
+                  leftIcon={<BsFillBagDashFill />}
+                  colorScheme="blue"
+                  variant="outline"
+                >
+                  Buy now
+                </Button>
+              </Link>
               <Button
-                disabled={!isLoggedIn}
-                leftIcon={<FaShoppingCart />}
-                colorScheme="red"
-                variant="solid"
                 onClick={() =>
                   dispatch(
                     isPresentInCart
@@ -114,16 +133,11 @@ const ProductInfo = () => {
                       : addToCart({ id, quantity: 1 })
                   )
                 }
+                colorScheme="blue"
+                leftIcon={<FaShoppingCart />}
+                disabled={!isLoggedIn}
               >
                 {isPresentInCart ? "Remove from cart" : "Add to cart"}
-              </Button>
-              <Button
-                disabled={!isLoggedIn}
-                leftIcon={<BsLightningFill />}
-                colorScheme="orange"
-                variant="solid"
-              >
-                Buy now
               </Button>
             </div>
           </div>
@@ -137,4 +151,4 @@ const ProductInfo = () => {
   );
 };
 
-export default ProductInfo;
+export default ProductDetail;
