@@ -17,6 +17,7 @@ import { formatToCurrency } from "../../utils/helpers";
 import { userSelector } from "../../actions/user/actionUser";
 import CategoryTag from "../../components/CategoryTag/CategoryTag";
 import ImageZoom from "../../components/ImageZoom";
+import Footer from "../../components/Footer";
 
 const ProductDetail = () => {
   const [similarProducts, setSimilarProducts] = useState([]);
@@ -146,6 +147,7 @@ const ProductDetail = () => {
         </h1>
         <ProductList filteredProducts={similarProducts} />
       </div>
+      <Footer />
     </div>
   );
 };

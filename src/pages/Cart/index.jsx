@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { productsSelector } from "../../actions/products/actionProduct";
+import Footer from "../../components/Footer";
 
 const Cart = () => {
   const { cart } = useSelector(productsSelector);

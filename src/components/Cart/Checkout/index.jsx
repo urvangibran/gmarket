@@ -111,7 +111,7 @@ const Checkout = () => {
         </button>
       </Tooltip>
       {isBuy && (
-        <div className="w-[255px] ">
+        <div className="w-full">
           <Alert status="success" variant="left-accent">
             <AlertIcon />
             Thank you for your purchase! 😃 
