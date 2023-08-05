@@ -1,7 +1,3 @@
-import { FaTruckMoving } from "react-icons/fa";
-import { RxUpdate } from "react-icons/rx";
-import { RiMoneyDollarCircleFill } from "react-icons/ri";
-import { RiSecurePaymentFill } from "react-icons/ri";
 import OfferCard from "../Cards/OfferCard";
 import freeShipping from "../../assets/freeShipping.png"
 import securePayment from "../../assets/securePayment.png"

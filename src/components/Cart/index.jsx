@@ -7,9 +7,9 @@ import CartListItem from "../Items/CartListItem";
 const CartContent = () => {
   const { cart } = useSelector(productsSelector);
   return (
-    <div className="col-span-3 w-full border rounded-sm space-y-5 bg-white shadow-sm">
-      <div className="p-4">
-        <h1 className="font-Poppins text-4xl tracking-tighter font-bold text-gray-800">
+    <div className={`${cart.length > 0 ? "" : "!w-[100%]"} max-h-[75vh] overflow-auto col-span-3 w-[80%] border rounded-sm space-y-5 shadow-sm`}>
+      <div className="p-4 sticky top-0 bg-white border-b z-10">
+        <h1 className="text-4xl tracking-tighter font-bold text-gray-800">
           Your Cart <FaShoppingCart className="inline ml-1" />
         </h1>
       </div>
@@ -21,6 +21,7 @@ const CartContent = () => {
                 <Th>Product</Th>
                 <Th>Price</Th>
                 <Th>Quantity</Th>
+                <Th>Total</Th>
                 <Th></Th>
               </Tr>
             </Thead>

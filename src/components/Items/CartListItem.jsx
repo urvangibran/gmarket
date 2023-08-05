@@ -1,4 +1,4 @@
-import { Button, IconButton, Td, Tr } from "@chakra-ui/react";
+import { Button, IconButton, Td, Tooltip, Tr } from "@chakra-ui/react";
 import { formatToCurrency } from "../../utils/helpers";
 import { MdAdd } from "react-icons/md";
 import { RiSubtractLine } from "react-icons/ri";
@@ -29,7 +29,7 @@ const CartListItem = ({ p }) => {
     <Tr>
       {/* Product */}
       <Td>
-        <Link to={`/products/${p.id}`}>
+        <Link to={`/products/${p.id}`} className="flex flex-col items-start">
           <div className="h-[70px] min-w-[70px]">
             <img
               src={p.image}
@@ -37,37 +37,53 @@ const CartListItem = ({ p }) => {
               className="max-h-full object-cover"
             />
           </div>
-          <div>
-            <h2 className="font-medium text-sm font-Poppins">{p.title}</h2>
+          <div className="">
+            <h2
+              className={`w-[120px] truncate font-medium text-sm font-Poppins md:w-[290px] ${
+                p.title.length > 120 ? "h-auto max-h-[120px] md:max-h-[160px] lg:max-h-[200px] xl:max-h-[240px] overflow-hidden overflow-y-auto" : ""
+              }`}
+            >
+              {p.title}
+            </h2>
           </div>
         </Link>
       </Td>
       {/* Price */}
       <Td>
         <span className="font-medium">
-          {formatToCurrency.format(p.price * p.quantity)}
+          {formatToCurrency.format(p.price)}
         </span>
       </Td>
       {/* Quantity */}
       <Td>
         <div className="flex items-center space-x-1">
-          <IconButton onClick={incrementQuantity}>
-            <MdAdd />
-          </IconButton>
-          <span>{p.quantity}</span>
-          <IconButton onClick={decrementQuantity}>
+          <IconButton size="xs" variant='solid' colorScheme="gray" onClick={decrementQuantity}>
             <RiSubtractLine />
+          </IconButton>
+          <span className="text-lg p-1.5">{p.quantity}</span>
+          <IconButton size="xs" variant='solid' colorScheme="gray" onClick={incrementQuantity}>
+            <MdAdd />
           </IconButton>
         </div>
       </Td>
+      <Td>
+        <span className="font-medium">
+          {formatToCurrency.format(p.price * p.quantity)}
+        </span>
+      </Td>
       {/* Remove */}
       <Td>
-        <Button
-          colorScheme="red"
-          onClick={() => dispatch(removeFromCart(p.id))}
+        <Tooltip
+          label="Remove this product from cart"
         >
-          Remove
-        </Button>
+          <Button
+            colorScheme="red"
+            size="sm"
+            onClick={() => dispatch(removeFromCart(p.id))}
+          >
+            Remove
+          </Button>
+        </Tooltip>
       </Td>
     </Tr>
   );

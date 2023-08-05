@@ -10,14 +10,23 @@ const Cart = () => {
   const { cart } = useSelector(productsSelector);
 
   return (
-    <div className="max-w-[1024px] py-10 mx-auto min-h-screen flex justify-center items-start flex-col space-y-6">
+    <div className={` w-[90%] h-[80%] py-10 p-4 mx-auto min-h-screen flex justify-center items-start flex-col space-y-6`}>
       <Link to="/">
-        <Button className="!font-Poppins" leftIcon={<BsArrowLeft />}>
-          Go Home
+        <Button
+          className='arial'
+          leftIcon={<BsArrowLeft />}
+          colorScheme="blue"
+          variant='outline'
+          color='#012A4A'
+        >
+
+          Go Back
         </Button>
       </Link>
-      <CartContent />
-      {cart.length > 0 && <Checkout />}
+      <div className="flex w-full flex-col gap-6 md:flex-row">
+        <CartContent />
+        {cart.length > 0 && <Checkout />}
+      </div>
     </div>
   );
 };

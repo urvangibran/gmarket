@@ -86,6 +86,10 @@ const productSlice = createSlice({
     clearWishList(state) {
       state.likedProducts = []
     },
+
+    clearCart(state) {
+      state.cart = []
+    },
   },
   extraReducers(builder) {
     builder
@@ -117,6 +121,7 @@ export const {
   addToCart,
   increaseQuantity,
   decreaseQuantity,
+  clearCart,
 } = productSlice.actions
 
 export default productSlice.reducer
