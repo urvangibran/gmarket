@@ -8,6 +8,7 @@ import {
   ModalCloseButton,
   useDisclosure,
   Button,
+  Tooltip,
 } from "@chakra-ui/react";
 import { FiHeart } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,7 +36,7 @@ const Wishlist = () => {
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent className="min-w-[600px] max-h-[600px] overflow-auto">
+        <ModalContent className="min-w-[600px] max-h-[550px] overflow-auto">
           <ModalHeader className="lucida">Your wishlist({likedProducts.length})</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -49,14 +50,20 @@ const Wishlist = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button
-              disabled={!likedProducts.length || !isLoggedIn}
-              onClick={() => dispatch(clearWishList())}
-              variant="solid"
-              colorScheme="red"
+            <Tooltip 
+              hasArrow
+              placement="top"
+              label="Clear All Wishlist"
             >
-              Clear whislist
-            </Button>
+              <Button
+                disabled={!likedProducts.length || !isLoggedIn}
+                onClick={() => dispatch(clearWishList())}
+                variant="solid"
+              >
+                Clear whislist
+              </Button>
+            </Tooltip>
+
             <Button colorScheme="blue" ml={3} onClick={onClose}>
               Close
             </Button>

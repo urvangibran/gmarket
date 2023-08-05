@@ -12,9 +12,10 @@ const LikedProductCard = ({ product }) => {
   const { isLoggedIn } = useSelector(userSelector);
   return (
     <li className="relative  p-4 border rounded-md" key={product.id}>
-      <Tooltip label="remove" hasArrow placement="top">
+      <Tooltip label="Remove" placement="top">
         <IconButton
           className="!absolute top-2 right-3"
+          colorScheme="red"
           disabled={!isLoggedIn}
           onClick={() => dispatch(removeFromWishlist(product.id))}
         >
@@ -30,8 +31,8 @@ const LikedProductCard = ({ product }) => {
               className="max-h-full object-cover"
             />
           </div>
-          <div className="w-full">
-            <h1 className="text-base font-Poppins max-w-lg">{product.title}</h1>
+          <div className="w-full lucida">
+            <h1 className="text-base w-[18rem]">{product.title}</h1>
 
             <div className="flex items-start space-x-1">
               <Tag colorScheme="green" size="sm">
