@@ -37,9 +37,9 @@ const Checkout = () => {
 
   const handleBuy = () => {
     setIsBuy(true)
-    // setTimeout(() => {
-    //   dispatch(clearCart())
-    // }, 3000);
+    setTimeout(() => {
+      dispatch(clearCart())
+    }, 3000);
   }
 
   const totalDiscount = (total * discount) / 100;
@@ -52,7 +52,7 @@ const Checkout = () => {
         placement="top"
       >
         <button
-          className="min-w-[250px] group transition-all active:scale-95"
+          className="w-full group transition-all active:scale-95"
           onClick={handleOpenModal}
         >
           <div className="flex justify-center items-center -mt-1 border-2 border-[#B1A8A8] rounded-sm group-hover:border-black">
@@ -64,7 +64,7 @@ const Checkout = () => {
         </button>
 
       </Tooltip>
-      <div className="border-b-[10px] left-0 top-[68px] w-[300px] mr-[8px] absolute border-[#EDEDED] pb-2"></div>
+      <div className="border-b-[10px] left-0 top-[68px] w-full  mr-[8px] absolute border-[#EDEDED] pb-2"></div>
       <br />
       <div className="mt-7">
         <h1 className="text-lg font-bold">Shopping summary</h1>

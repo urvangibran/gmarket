@@ -2,7 +2,6 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import Typewriter from "typewriter-effect";
 import Img1 from "../../assets/hero1.jpg";
 import Img2 from "../../assets/hero2.jpg";
-import { color } from "@chakra-ui/react";
 
 const Hero = () => {
   return (
