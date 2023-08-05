@@ -1,6 +1,6 @@
-import { Button, Center, Spinner, Tag } from "@chakra-ui/react";
+import { Button, Center, Spinner, Tag, useMediaQuery } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router-dom";
 import { myAxios } from "../../api/config";
 import { AiTwotoneStar } from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
@@ -17,7 +17,6 @@ import { formatToCurrency } from "../../utils/helpers";
 import { userSelector } from "../../actions/user/actionUser";
 import CategoryTag from "../../components/CategoryTag/CategoryTag";
 import ImageZoom from "../../components/ImageZoom";
-import { Link } from "react-router-dom";
 
 const ProductDetail = () => {
   const [similarProducts, setSimilarProducts] = useState([]);
@@ -30,12 +29,12 @@ const ProductDetail = () => {
 
   const { products, cart } = useSelector(productsSelector);
   const { isLoggedIn } = useSelector(userSelector);
+  const [isSmallerThan768] = useMediaQuery("(max-width: 767px)");
 
   useEffect(() => {
     async function getProductDetail() {
       try {
         const res = await myAxios.get(`/products/${id}`);
-        // console.log(res.data);
         setProduct(res.data);
       } catch (err) {
         setError(err.message);
@@ -80,11 +79,11 @@ const ProductDetail = () => {
   return (
     <div>
       <Navbar />
-      <div className="max-w-[1024px] mx-auto  mt-20">
+      <div className="flex p-2 flex-col max-w-[1024px] mx-auto mt-20">
         {/* left */}
-        <div className="flex space-x-10 justify-between items-start">
-          <div className="h-[300px] min-w-[300px] flex items-center">
-            <ImageZoom src={product?.image} alt={product?.title} />
+        <div className="flex flex-col md:flex-row md:space-x-10 justify-between items-start">
+          <div className={`h-[300px] w-[200px] md:min-w-[300px] -mt-28 md:mt-0 flex items-center ${isSmallerThan768 ? 'mx-auto' : ''}`}>
+            <ImageZoom src={product?.image} alt={product?.title} className={isSmallerThan768 ? 'w-[100px] h-10' : 'w-[100px] h-10'} />
           </div>
 
           {/* right */}

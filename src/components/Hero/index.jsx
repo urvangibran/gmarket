@@ -6,8 +6,8 @@ import { color } from "@chakra-ui/react";
 
 const Hero = () => {
   return (
-    <div className="w-full">
-      <div className="max-w-[1024px] mx-auto min-h-[650px] flex items-center justify-between">
+    <div className="w-full mt-28 md:mt-5">
+      <div className="flex flex-col md:flex-row items-center justify-between max-w-[1024px] mx-auto min-h-[650px]">
 
 
         <div className="text-center lucida ml-10 md:ml-0 md:text-start mt-[-5rem] ">
@@ -37,15 +37,15 @@ const Hero = () => {
         </div>
 
 
-        <div className="relative min-h-[600px] flex items-center ml-10">
-          <div className="h-[300px] hidden md:block absolute  -left-[30rem] top-30 w-[400px] rounded-lg rotate-[30deg] scale-[.7] shadow-2xl">
+        <div className="relative w-full min-h-[300px] md:w-1/2 mt-3 md:mt-0">
+          <div className="h-[300px] absolute -left-8 top-0 w-[400px] rounded-lg md:rotate-[30deg] scale-[.7] shadow-2xl md:-top-10 md:w-[400px] md:scale-[0.8] rotate-0">
             <img
               src={Img1}
               alt="shopping"
               className="max-h-full w-full object-cover rounded-lg"
             />
           </div>
-          <div className="h-[350px] w-[400px] hidden md:block absolute -left-[18rem] top-10 rounded-lg scale-[0.65] -rotate-[20deg] shadow-2xl">
+          <div className="h-[350px] w-[400px] absolute -right-8 top-10 rounded-lg scale-[0.65] md:-rotate-[20deg] shadow-2xl md:left-48 md:-top-32 md:scale-[0.65] rotate-0">
             <img
               src={Img2}
               alt="shopping"

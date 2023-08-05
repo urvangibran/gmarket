@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Center, Spinner } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Center, Spinner, useMediaQuery } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { FaMale, FaFemale } from "react-icons/fa";
 import { GiBigDiamondRing, GiBallerinaShoes } from "react-icons/gi";
@@ -13,6 +13,7 @@ const ShopByCategories = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const { products, isFetching } = useSelector(productsSelector);
+  const [isSmallerThan768] = useMediaQuery("(max-width: 767px)");
 
   useEffect(() => {
     const filteredData = products.filter((product) => product.category === filterType);
@@ -40,7 +41,13 @@ const ShopByCategories = () => {
           _hover={{ boxShadow: "lg" }}
           transition="all 0.3s"
         >
-          <ButtonGroup size="sm" isAttached variant="outline">
+          <ButtonGroup
+            size={isSmallerThan768 ? "sm" : "md"}
+            isAttached
+            variant="outline"
+            flexWrap={isSmallerThan768 ? "wrap" : "nowrap"}
+            justifyContent="center"
+          >
             <Button
               onClick={() => setFilterType("electronics")}
               isActive={filterType === "electronics"}
@@ -69,7 +76,6 @@ const ShopByCategories = () => {
             >
               Women's Clothing
             </Button>
-            {/* there is no API shoes */}
             <Button
               onClick={() => setFilterType("shoes")}
               isActive={filterType === "shoes"}
@@ -77,7 +83,6 @@ const ShopByCategories = () => {
             >
               Shoes
             </Button>
-            {/* there is no API for computer and laptop */}
             <Button
               onClick={() => setFilterType("computer")}
               isActive={filterType === "computer"}

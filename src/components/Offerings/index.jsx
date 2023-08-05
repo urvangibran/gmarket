@@ -37,11 +37,11 @@ const offers = [
 
 const Offerings = () => {
   return (
-    <div className="w-full bg-slate-50 border py-20">
+    <div className="w-full p-2 bg-slate-50 border py-20">
       <h1 className="text-center font-bold lucida text-5xl mb-6">
         Our Offerings 
       </h1>
-      <div className="grid grid-cols-2 gap-4 max-w-[1024px] mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[1024px] mx-auto">
         {offers.map((offer) => (
           <OfferCard offer={offer} key={offer.id} />
         ))}

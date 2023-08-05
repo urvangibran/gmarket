@@ -42,7 +42,7 @@ const LikedProductCard = ({ product }) => {
                 ({product.rating.count})
               </p>
             </div>
-            <h2 className="text-sm font-Poppins font-semibold my-3">
+            <h2 className="text-sm font-semibold my-3">
               {formatToCurrency.format(product.price)}
             </h2>
           </div>

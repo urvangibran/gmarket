@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
   const stock = Math.floor(Math.random() * 31);
 
   return (
-    <div className="border p-4 mr-4 rounded-md hover:border-[#012A4A] transition-all duration-300">
+    <div className="border p-4 mr-4 min-w-[120px] rounded-md hover:border-[#012A4A] transition-all duration-300">
       <Link to={`/products/${product.id}`}>
         <div className="space-y-1">
           <img
