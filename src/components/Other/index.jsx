@@ -10,18 +10,61 @@ import Img404 from "../../assets/page404.jpg";
 import Footer from '../Footer';
 import { Link } from 'react-router-dom';
 
-function Other() {
+function Other(props) {
   const [isUsername, setIsUsername] = useState("urvangibran");
   const [imageUrl, setImageUrl] = useState('https://bit.ly/kent-c-dodds');
   const [accountSubMenuOpen, setAccountSubMenuOpen] = useState(true);
+  const [accountActive, setAccountActive] = useState(false)
   const [orderSubMenuOpen, setOrderSubMenuOpen] = useState(false);
+  const [orderActive, setOrderActive] = useState(false)
+  const [notificationSubMenuOpen, setNotificationSubMenuOpen] = useState(false);
+  const [notificationActive, setNotificationActive] = useState(false)
+  const [voucherSubMenuOpen, setVoucherSubMenuOpen] = useState(false);
+  const [voucherActive, setVoucherActive] = useState(false)
+  const [coinSubMenuOpen, setCoinSubMenuOpen] = useState(false);
+  const [coinActive, setCoinActive] = useState(false)
 
+  const reset = () => {
+    setAccountActive(false)
+    setAccountSubMenuOpen(false)
+    setCoinActive(false)
+    setCoinSubMenuOpen(false)
+    setNotificationActive(false)
+    setNotificationSubMenuOpen(false)
+    setOrderActive(false)
+    setOrderSubMenuOpen(false)
+    setVoucherActive(false)
+    setVoucherSubMenuOpen(false)
+  }
+    
   const toggleAccountSubMenu = () => {
+    reset()
+    setAccountActive(!accountActive)
     setAccountSubMenuOpen(!accountSubMenuOpen);
   };
 
   const toggleOrderSubMenu = () => {
+    reset()
+    setOrderActive(!orderActive)
     setOrderSubMenuOpen(!orderSubMenuOpen);
+  };
+
+  const toggleNotificationSubMenu = () => {
+    reset()
+    setNotificationActive(!notificationActive)
+    setNotificationSubMenuOpen(!notificationSubMenuOpen)
+  };
+
+  const toggleVoucherSubMenu = () => {
+    reset()
+    setVoucherActive(!voucherActive)
+    setVoucherSubMenuOpen(!voucherSubMenuOpen)
+  };
+
+  const toggleCoinSubMenu = () => {
+    reset()
+    setCoinActive(!coinActive)
+    setCoinSubMenuOpen(!coinSubMenuOpen)
   };
 
   return (
@@ -48,52 +91,71 @@ function Other() {
               <div className='pl-7 mt-5'>
                 <div className='flex items-center gap-2 mb-4'>
                   <HiUser className='w-6 h-6' />
-                  <h5 className='font-semibold cursor-pointer hover:text-[#2c7da0]' onClick={toggleAccountSubMenu}>My Account</h5>
+                  <h5 className={`font-semibold cursor-pointer hover:text-[#2c7da0]  ${!accountActive && "text-[#2c7da0]"} `} onClick={toggleAccountSubMenu}>My Account</h5>
                 </div>
                 {accountSubMenuOpen && (
                   <div className='pl-9'>
                     <Link to="/account/profile">
-                      <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>Profile</h5>
+                      <h5 className={`mb-3 cursor-pointer ${props.text === "profile" ? "text-[#2c7da0]" : "hover:text-[#2c7da0]"} `}>Profile</h5>
                     </Link>
-                    <Link to="/account/other">
-                      <h5 className='mb-3 cursor-pointer text-[#2c7da0]'>Bank & Cards</h5>
+                    <Link to="/account/bank&cards">
+                      <h5 className={`mb-3 cursor-pointer ${props.text === "bank&cards" ? "text-[#2c7da0]" : "hover:text-[#2c7da0]"} `}>Bank & Cards</h5>
                     </Link>
-                    <Link to="/account/other">
-                      <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>Address</h5>
+                    <Link to="/account/adress">
+                      <h5 className={`mb-3 cursor-pointer ${props.text === "adress" ? "text-[#2c7da0]" : "hover:text-[#2c7da0]"} `}>Address</h5>
                     </Link>
-                    <Link to="/account/other">
-                      <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>Change Password</h5>
+                    <Link to="/account/password">
+                      <h5 className={`mb-3 cursor-pointer ${props.text === "password" ? "text-[#2c7da0]" : "hover:text-[#2c7da0]"} `}>Change Password</h5>
                     </Link>
-                    <Link to="/account/other">
-                      <h5 className='mb-4 cursor-pointer hover:text-[#2c7da0]'>Notification Settings</h5>
+                    <Link to="/account/notification">
+                      <h5 className={`mb-4 cursor-pointer ${props.text === "notification" ? "text-[#2c7da0]" : "hover:text-[#2c7da0]"} `}>Notification Settings</h5>
                     </Link>
                   </div>
                 )}
                 <div className='flex items-center gap-2 mb-3'>
                   <BiNotepad className='w-6 h-6 text-[#A3B5D6] ' />
-                  <h5 className='font-semibold cursor-pointer hover:text-[#2c7da0]' onClick={toggleOrderSubMenu}>My Orders</h5>
+                  <h5 className={`font-semibold cursor-pointer hover:text-[#2c7da0] ${orderActive && "text-[#2c7da0]"} `} onClick={toggleOrderSubMenu}>My Orders</h5>
                 </div>
                 {orderSubMenuOpen && (
                   <div className='pl-9'>
-                    <h5 className='mb-3 cursor-pointer text-[#2c7da0]'>Profile</h5>
-                    <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>Bank & Cards</h5>
-                    <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>Address</h5>
-                    <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>Change Password</h5>
-                    <h5 className='mb-4 cursor-pointer hover:text-[#2c7da0]'>Notification Settings</h5>
+                    <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>Last Week</h5>
+                    <h5 className='mb-4 cursor-pointer hover:text-[#2c7da0]'>Last Month</h5>
                   </div>
                 )}
                 <div className='flex items-center gap-2 mb-3'>
                   <GrNotification className='w-6 h-6 text-[#E27C63]' />
-                  <h5 className='font-semibold cursor-pointer hover:text-[#2c7da0]'>Notifications</h5>
+                  <h5 className={`font-semibold cursor-pointer hover:text-[#2c7da0] ${notificationActive && "text-[#2c7da0]"}`} onClick={toggleNotificationSubMenu}>Notifications</h5>
                 </div>
+                {notificationSubMenuOpen && (
+                  <div className='pl-9'>
+                    <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>Order Status</h5>
+                    <h5 className='mb-4 cursor-pointer hover:text-[#2c7da0]'>GMarket Promos</h5>
+                    <h5 className='mb-4 cursor-pointer hover:text-[#2c7da0]'>GMarket Info</h5>
+                  </div>
+                )}
                 <div className='flex items-center gap-2 mb-3'>
                   <BsFillTicketDetailedFill className='w-6 h-6 text-[#E15F3F]' />
-                  <h5 className='font-semibold cursor-pointer hover:text-[#2c7da0]'>My Vouchers</h5>
+                  <h5 className={`font-semibold cursor-pointer hover:text-[#2c7da0] ${voucherActive && "text-[#2c7da0]"} `} onClick={toggleVoucherSubMenu} >My Vouchers</h5>
                 </div>
+                {voucherSubMenuOpen && (
+                  <div className='pl-9'>
+                    <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>Voucher Management</h5>
+                    <h5 className='mb-4 cursor-pointer hover:text-[#2c7da0]'>Redeem Vouchers</h5>
+                    <h5 className='mb-4 cursor-pointer hover:text-[#2c7da0]'>Voucher History</h5>
+                    <h5 className='mb-4 cursor-pointer hover:text-[#2c7da0]'>Coupon Center</h5>
+                  </div>
+                )}
                 <div className='flex items-center gap-2 mb-3'>
                   <AiOutlineDollarCircle className='w-6 h-6 text-[#E8AE3C]' />
-                  <h5 className='font-semibold cursor-pointer hover:text-[#2c7da0]'>My Shopee Coins</h5>
+                  <h5 className={`font-semibold cursor-pointer hover:text-[#2c7da0] ${voucherActive && "text-[#2c7da0]"} `} onClick={toggleCoinSubMenu} >My GMarket Coins</h5>
                 </div>
+                {coinSubMenuOpen && (
+                  <div className='pl-9'>
+                    <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>My Coins</h5>
+                    <h5 className='mb-4 cursor-pointer hover:text-[#2c7da0]'>Virtual Currency</h5>
+                    <h5 className='mb-4 cursor-pointer hover:text-[#2c7da0]'>Coin Balance</h5>
+                  </div>
+                )}
 
               </div>
             </div>
