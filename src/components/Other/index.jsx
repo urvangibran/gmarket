@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import Navbar from '../../components/Navbar';
+import Navbar from '../Navbar';
 import { Avatar, Box, Button, InputGroup, InputLeftElement, Text, Tr, WrapItem } from '@chakra-ui/react';
 import { BsFillPencilFill, BsFillTicketDetailedFill } from 'react-icons/bs';
 import { HiUser } from 'react-icons/hi';
 import { BiNotepad, BiPhoneIncoming } from 'react-icons/bi';
 import { GrNotification } from 'react-icons/gr';
 import { AiOutlineDollarCircle } from 'react-icons/ai';
-import { Input } from '@chakra-ui/react';
-import Footer from '../../components/Footer';
-import Profile from '../../components/Profile';
+import Img404 from "../../assets/page404.jpg";
+import Footer from '../Footer';
 import { Link } from 'react-router-dom';
 
-function Account() {
+function Other() {
   const [isUsername, setIsUsername] = useState("urvangibran");
   const [imageUrl, setImageUrl] = useState('https://bit.ly/kent-c-dodds');
   const [accountSubMenuOpen, setAccountSubMenuOpen] = useState(true);
@@ -26,7 +25,6 @@ function Account() {
   };
 
   return (
-
     <div>
       <div className='bg-[#F5F5F5] h-[1000px]'>
         <Navbar />
@@ -55,14 +53,20 @@ function Account() {
                 {accountSubMenuOpen && (
                   <div className='pl-9'>
                     <Link to="/account/profile">
-                      <h5 className='mb-3 cursor-pointer text-[#2c7da0]'>Profile</h5>
+                      <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>Profile</h5>
                     </Link>
                     <Link to="/account/other">
-                      <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>Bank & Cards</h5>
+                      <h5 className='mb-3 cursor-pointer text-[#2c7da0]'>Bank & Cards</h5>
                     </Link>
-                    <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>Address</h5>
-                    <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>Change Password</h5>
-                    <h5 className='mb-4 cursor-pointer hover:text-[#2c7da0]'>Notification Settings</h5>
+                    <Link to="/account/other">
+                      <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>Address</h5>
+                    </Link>
+                    <Link to="/account/other">
+                      <h5 className='mb-3 cursor-pointer hover:text-[#2c7da0]'>Change Password</h5>
+                    </Link>
+                    <Link to="/account/other">
+                      <h5 className='mb-4 cursor-pointer hover:text-[#2c7da0]'>Notification Settings</h5>
+                    </Link>
                   </div>
                 )}
                 <div className='flex items-center gap-2 mb-3'>
@@ -93,12 +97,21 @@ function Account() {
 
               </div>
             </div>
-            <Profile
-              isUsername={isUsername}
-              imageUrl={imageUrl}
-              updateUsername={setIsUsername}
-              updateImageUrl={setImageUrl}
-            />
+            <div className='bg-white mt-7 pl-7 pt-4 rounded-md flex flex-col justify-center items-center'>
+              <img
+                src={Img404}
+                alt="Page Not Found"
+                className="w-60 h-60 mr-4"
+              />
+              <div>
+                <h5 className="text-xl font-semibold mb-2">Page Not Created</h5>
+                <p className="text-gray-600">
+                  We apologize, but this page doesn't exist due to developer limitations.
+                </p>
+              </div>
+            </div>
+
+
           </div>
         </div>
       </div >
@@ -107,4 +120,4 @@ function Account() {
   )
 }
 
-export default Account
+export default Other

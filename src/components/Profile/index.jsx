@@ -1,44 +1,45 @@
-import React, { useState } from 'react'
-import { Avatar, Box, Button, InputGroup, InputLeftElement, Text, WrapItem } from '@chakra-ui/react'
-import { Input } from '@chakra-ui/react'
+import React, { useState } from 'react';
+import { Avatar, Box, Button, InputGroup, InputLeftElement, Text, WrapItem } from '@chakra-ui/react';
+import { Input } from '@chakra-ui/react';
 import { BiPhoneIncoming } from 'react-icons/bi';
 
-function Profile() {
-    const [imageSizeError, setImageSizeError] = useState(false);
-    const [imageFormatError, setImageFormatError] = useState(false);
-    const [isUsername, setIsUsername] = useState("urvangibran")
-    const [imageUrl, setImageUrl] = useState('https://bit.ly/kent-c-dodds');
+function Profile(props) {
+  const [imageSizeError, setImageSizeError] = useState(false);
+  const [imageFormatError, setImageFormatError] = useState(false);
+  const [isUsername, setIsUsername] = useState(props.isUsername);
+  const [imageUrl, setImageUrl] = useState(props.imageUrl);
 
-
-    const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
         if (file) {
             const allowedFormats = ['image/jpeg', 'image/png'];
             const maxSize = 1024 * 1024; // 1 MB
 
             if (allowedFormats.includes(file.type)) {
                 if (file.size <= maxSize) {
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        setImageUrl(e.target.result);
-                        setImageSizeError(false);
-                        setImageFormatError(false);
-                    };
-                    reader.readAsDataURL(file);
-                } else {
-                    setImageSizeError(true);
+                  const reader = new FileReader();
+                  reader.onload = (e) => {
+                    setImageUrl(e.target.result);
+                    setImageSizeError(false);
                     setImageFormatError(false);
+                    props.updateImageUrl(e.target.result);
+                  };
+                  reader.readAsDataURL(file);
+                } else {
+                  setImageSizeError(true);
+                  setImageFormatError(false);
                 }
-            } else {
+              } else {
                 setImageFormatError(true);
                 setImageSizeError(false);
-            }
+              }
         }
     };
     const handleUsername = (event) => {
-        setIsUsername(event.target.value)
-    }
+        const newUsername = event.target.value;
+        setIsUsername(newUsername);
+        props.updateUsername(newUsername);
+      };
 
     return (
         <div className='bg-white mt-7 pl-7 pt-4 rounded-md'>
