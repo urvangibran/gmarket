@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
-import { Avatar, Box, Button, InputGroup, InputLeftElement, Text, Tr, WrapItem } from '@chakra-ui/react';
+import { Avatar, WrapItem } from '@chakra-ui/react';
 import { BsFillPencilFill, BsFillTicketDetailedFill } from 'react-icons/bs';
 import { HiUser } from 'react-icons/hi';
-import { BiNotepad, BiPhoneIncoming } from 'react-icons/bi';
+import { BiNotepad } from 'react-icons/bi';
 import { GrNotification } from 'react-icons/gr';
 import { AiOutlineDollarCircle } from 'react-icons/ai';
-import { Input } from '@chakra-ui/react';
 import Footer from '../../components/Footer';
 import Profile from '../../components/Profile';
 import { Link } from 'react-router-dom';
@@ -93,7 +92,7 @@ function Account() {
               <div className='pl-7 mt-5'>
                 <div className='flex items-center gap-2 mb-4'>
                   <HiUser className='w-6 h-6' />
-                  <h5 className={`font-semibold cursor-pointer hover:text-[#2c7da0]  ${!accountActive && "text-[#2c7da0]"} `} onClick={toggleAccountSubMenu}>My Account</h5>
+                  <h5 className={`font-semibold cursor-pointer hover:text-[#2c7da0]  ${accountActive && "text-[#2c7da0]"} `} onClick={toggleAccountSubMenu}>My Account</h5>
                 </div>
                 {accountSubMenuOpen && (
                   <div className='pl-9'>
@@ -149,7 +148,7 @@ function Account() {
                 )}
                 <div className='flex items-center gap-2 mb-3'>
                   <AiOutlineDollarCircle className='w-6 h-6 text-[#E8AE3C]' />
-                  <h5 className={`font-semibold cursor-pointer hover:text-[#2c7da0] ${voucherActive && "text-[#2c7da0]"} `} onClick={toggleCoinSubMenu} >My GMarket Coins</h5>
+                  <h5 className={`font-semibold cursor-pointer hover:text-[#2c7da0] ${coinActive && "text-[#2c7da0]"} `} onClick={toggleCoinSubMenu} >My GMarket Coins</h5>
                 </div>
                 {coinSubMenuOpen && (
                   <div className='pl-9'>

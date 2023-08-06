@@ -26,8 +26,8 @@ const CartContent = () => {
               </Tr>
             </Thead>
             <Tbody>
-              {cart.map((p) => (
-                <CartListItem p={p} key={p.id} />
+              {cart.map((product) => (
+                <CartListItem product={product} key={product.id} />
               ))}
             </Tbody>
           </Table>

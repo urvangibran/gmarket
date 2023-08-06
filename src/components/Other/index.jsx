@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Navbar from '../Navbar';
-import { Avatar, Box, Button, InputGroup, InputLeftElement, Text, Tr, WrapItem } from '@chakra-ui/react';
+import { Avatar, WrapItem } from '@chakra-ui/react';
 import { BsFillPencilFill, BsFillTicketDetailedFill } from 'react-icons/bs';
 import { HiUser } from 'react-icons/hi';
-import { BiNotepad, BiPhoneIncoming } from 'react-icons/bi';
+import { BiNotepad } from 'react-icons/bi';
 import { GrNotification } from 'react-icons/gr';
 import { AiOutlineDollarCircle } from 'react-icons/ai';
 import Img404 from "../../assets/page404.jpg";
@@ -11,8 +11,8 @@ import Footer from '../Footer';
 import { Link } from 'react-router-dom';
 
 function Other(props) {
-  const [isUsername, setIsUsername] = useState("urvangibran");
-  const [imageUrl, setImageUrl] = useState('https://bit.ly/kent-c-dodds');
+  const [isUsername] = useState("urvangibran");
+  const [imageUrl] = useState('https://bit.ly/kent-c-dodds');
   const [accountSubMenuOpen, setAccountSubMenuOpen] = useState(true);
   const [accountActive, setAccountActive] = useState(false)
   const [orderSubMenuOpen, setOrderSubMenuOpen] = useState(false);
@@ -91,7 +91,7 @@ function Other(props) {
               <div className='pl-7 mt-5'>
                 <div className='flex items-center gap-2 mb-4'>
                   <HiUser className='w-6 h-6' />
-                  <h5 className={`font-semibold cursor-pointer hover:text-[#2c7da0]  ${!accountActive && "text-[#2c7da0]"} `} onClick={toggleAccountSubMenu}>My Account</h5>
+                  <h5 className={`font-semibold cursor-pointer hover:text-[#2c7da0]  ${accountActive && "text-[#2c7da0]"} `} onClick={toggleAccountSubMenu}>My Account</h5>
                 </div>
                 {accountSubMenuOpen && (
                   <div className='pl-9'>
@@ -147,7 +147,7 @@ function Other(props) {
                 )}
                 <div className='flex items-center gap-2 mb-3'>
                   <AiOutlineDollarCircle className='w-6 h-6 text-[#E8AE3C]' />
-                  <h5 className={`font-semibold cursor-pointer hover:text-[#2c7da0] ${voucherActive && "text-[#2c7da0]"} `} onClick={toggleCoinSubMenu} >My GMarket Coins</h5>
+                  <h5 className={`font-semibold cursor-pointer hover:text-[#2c7da0] ${coinActive && "text-[#2c7da0]"} `} onClick={toggleCoinSubMenu} >My GMarket Coins</h5>
                 </div>
                 {coinSubMenuOpen && (
                   <div className='pl-9'>

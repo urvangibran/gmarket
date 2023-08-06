@@ -47,7 +47,9 @@ function FooterComponent() {
             <div className='container mx-auto text-center text-gray-600'>
                 <div className='flex justify-center space-x-4'>
                     <BsFacebook className='text-2xl hover:text-blue-500 cursor-pointer' />
-                    <FaInstagramSquare className='text-2xl hover:text-purple-600 cursor-pointer rounded-[50%]' />
+                    <a target='_blank' href="https://instagram.com/urvangibran">
+                        <FaInstagramSquare className='text-2xl hover:text-purple-600 cursor-pointer rounded-[50%]' />
+                    </a>
                     <AiFillTwitterCircle className='text-2xl hover:text-blue-400 cursor-pointer' />
                 </div>
                 <p className='mt-4'>&copy; GMarket {new Date().getFullYear()}</p>

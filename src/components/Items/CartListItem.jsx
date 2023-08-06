@@ -10,57 +10,54 @@ import {
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-const CartListItem = ({ p }) => {
+const CartListItem = ({ product }) => {
   const dispatch = useDispatch();
 
   const incrementQuantity = () => {
-    dispatch(increaseQuantity(p.id));
+    dispatch(increaseQuantity(product.id));
   };
 
   const decrementQuantity = () => {
-    if (p.quantity === 1) {
-      dispatch(removeFromCart(p.id));
+    if (product.quantity === 1) {
+      dispatch(removeFromCart(product.id));
       return;
     }
-    dispatch(decreaseQuantity(p.id));
+    dispatch(decreaseQuantity(product.id));
   };
 
   return (
     <Tr>
-      {/* Product */}
       <Td>
-        <Link to={`/products/${p.id}`} className="flex flex-col items-start">
+        <Link to={`/products/${product.id}`} className="flex flex-col items-start">
           <div className="h-[70px] min-w-[70px]">
             <img
-              src={p.image}
-              alt={p.title}
+              src={product.image}
+              alt={product.title}
               className="max-h-full object-cover"
             />
           </div>
           <div className="">
             <h2
-              className={`w-[120px] truncate font-medium text-sm font-Poppins md:w-[290px] ${
-                p.title.length > 120 ? "h-auto max-h-[120px] md:max-h-[160px] lg:max-h-[200px] xl:max-h-[240px] overflow-hidden overflow-y-auto" : ""
+              className={`w-[120px] truncate font-medium text-sm md:w-[290px] ${
+                product.title.length > 120 ? "h-auto max-h-[120px] md:max-h-[160px] lg:max-h-[200px] xl:max-h-[240px] overflow-hidden overflow-y-auto" : ""
               }`}
             >
-              {p.title}
+              {product.title}
             </h2>
           </div>
         </Link>
       </Td>
-      {/* Price */}
       <Td>
         <span className="font-medium">
-          {formatToCurrency.format(p.price)}
+          {formatToCurrency.format(product.price)}
         </span>
       </Td>
-      {/* Quantity */}
       <Td>
         <div className="flex items-center space-x-1">
           <IconButton size="xs" variant='solid' colorScheme="gray" onClick={decrementQuantity}>
             <RiSubtractLine />
           </IconButton>
-          <span className="text-lg p-1.5">{p.quantity}</span>
+          <span className="text-lg product-1.5">{product.quantity}</span>
           <IconButton size="xs" variant='solid' colorScheme="gray" onClick={incrementQuantity}>
             <MdAdd />
           </IconButton>
@@ -68,10 +65,9 @@ const CartListItem = ({ p }) => {
       </Td>
       <Td>
         <span className="font-medium">
-          {formatToCurrency.format(p.price * p.quantity)}
+          {formatToCurrency.format(product.price * product.quantity)}
         </span>
       </Td>
-      {/* Remove */}
       <Td>
         <Tooltip
           label="Remove this product from cart"
@@ -79,7 +75,7 @@ const CartListItem = ({ p }) => {
           <Button
             colorScheme="red"
             size="sm"
-            onClick={() => dispatch(removeFromCart(p.id))}
+            onClick={() => dispatch(removeFromCart(product.id))}
           >
             Remove
           </Button>

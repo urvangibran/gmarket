@@ -65,7 +65,7 @@ const ProductDetail = () => {
   if (error) {
     return (
       <Center h="100vh" w="100vw">
-        <p className="text-xl text-red-500 font-Poppins">{error}</p>
+        <p className="text-xl text-red-500 ">{error}</p>
       </Center>
     );
   }
@@ -81,16 +81,17 @@ const ProductDetail = () => {
     <div>
       <Navbar />
       <div className="flex p-2 flex-col max-w-[1024px] mx-auto mt-20">
-        {/* left */}
+
+        {/* left comp */}
         <div className="flex flex-col md:flex-row md:space-x-10 justify-between items-start">
           <div className={`h-[300px] w-[200px] md:min-w-[300px] -mt-28 md:mt-0 flex items-center ${isSmallerThan768 ? 'mx-auto' : ''}`}>
             <ImageZoom src={product?.image} alt={product?.title} className={isSmallerThan768 ? 'w-[100px] h-10' : 'w-[100px] h-10'} />
           </div>
 
-          {/* right */}
+          {/* right comp*/}
           <div className="pt-10">
             <CategoryTag product={product} />
-            <h1 className="text-3xl font-bold font-Poppins mb-1">
+            <h1 className="text-3xl font-bold  mb-1">
               {product?.title}
             </h1>
             <div className="flex items-center">
@@ -101,7 +102,7 @@ const ProductDetail = () => {
                 ({product?.rating.count})
               </p>
             </div>
-            <h2 className="text-xl font-Poppins font-semibold my-3">
+            <h2 className="text-xl  font-semibold my-3">
               {formatToCurrency.format(product?.price)}
             </h2>
             <p className="text-gray-500 lucida first-letter:uppercase">{product?.description}</p>
@@ -142,11 +143,12 @@ const ProductDetail = () => {
             </div>
           </div>
         </div>
-        <h1 className="mt-20 font-Poppins font-semibold text-xl">
+        <h1 className="mt-20  font-semibold text-xl">
           Similar Products
         </h1>
         <ProductList filteredProducts={similarProducts} />
       </div>
+      
       <Footer />
     </div>
   );

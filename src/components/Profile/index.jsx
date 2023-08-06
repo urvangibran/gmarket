@@ -118,7 +118,7 @@ function Profile(props) {
 
                     <div className='my-2'>
                         <label htmlFor='image-upload' style={{ display: 'block', mt: '4' }}>
-                            <Button as='span' colorScheme='blue' size='sm'>
+                            <Button className='cursor-pointer' as='span' colorScheme='blue' size='sm'>
                                 Upload Image
                             </Button>
                         </label>

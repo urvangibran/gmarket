@@ -16,8 +16,8 @@ const Checkout = () => {
   useEffect(() => {
     setTotal(0);
     let sum = 0;
-    cart.forEach((p) => {
-      sum = sum + p.price * p.quantity;
+    cart.forEach((product) => {
+      sum = sum + product.price * product.quantity;
     });
     setTotal(sum);
   }, [cart]);
@@ -45,7 +45,7 @@ const Checkout = () => {
   const totalDiscount = (total * discount) / 100;
 
   return (
-    <div className="border relative shadow-sm rounded-lg font-Poppins p-5 max-w-[400px] h-[50%] md:min-w-[300px]">
+    <div className="border relative shadow-sm rounded-lg p-5 max-w-[400px] h-[50%] md:min-w-[300px]">
       <Tooltip
         hasArrow
         label="Get the discount!"

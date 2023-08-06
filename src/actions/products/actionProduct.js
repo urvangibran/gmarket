@@ -9,7 +9,6 @@ const initialState = {
   error: null,
 };
 
-//async thunk call for posts:
 export const getAllProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
@@ -48,23 +47,19 @@ const productSlice = createSlice({
       const productId = action.payload
       const productIndex = state.cart.findIndex((product) => product.id === productId)
       if (productIndex >= 0) {
-        // Increase the quantity if the product is already in the cart
         state.cart[productIndex].quantity++
       }
     },
 
-    //Decrease cart product quantity:
     decreaseQuantity(state, action) {
       const productId = action.payload
       const productIndex = state.cart.findIndex((product) => product.id === productId)
       if (productIndex >= 0) {
-        // Descrease the quantity if the product is already in the cart
         state.cart[productIndex].quantity =
           state.cart[productIndex].quantity - 1
       }
     },
 
-    //like a product
     addToWishlist(state, action) {
       const product = current(state).products.find(
         (product) => product.id === action.payload
@@ -74,7 +69,6 @@ const productSlice = createSlice({
       }
     },
 
-    //remove from like list
     removeFromWishlist(state, action) {
       const filteredList = current(state).likedProducts.filter(
         (product) => product.id !== action.payload
@@ -82,7 +76,6 @@ const productSlice = createSlice({
       state.likedProducts = filteredList
     },
 
-    //clear like list:
     clearWishList(state) {
       state.likedProducts = []
     },
