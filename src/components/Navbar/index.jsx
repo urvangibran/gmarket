@@ -43,9 +43,9 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-4">
           <Wishlist />
           {isLoggedIn ? (
-            <Link className="relative group" to="/profile">
+            <Link className="relative group" to="/account/profile">
               <BiUser className="w-7 h-7 text-[#012A4A]" />
-              <h3 className="absolute opacity-0 group-hover:opacity-100 lucida text-[12px] -left-[1px] transition-all ease-in-out duration-500 font-[400]">Profile</h3>
+              <h3 className="absolute opacity-0 group-hover:opacity-100 lucida text-[12px] -left-[7px] transition-all ease-in-out duration-500 font-[400]">Account</h3>
             </Link>
           ) : (
             <Tooltip
